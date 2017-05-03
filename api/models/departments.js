@@ -1,4 +1,4 @@
-const db = require('../../../express-postgres-api/db');
+const db = require('../../db');
 
 const bSelect = 'sp_departments.id_department, ' +
     'sp_departments.name_department, ' +

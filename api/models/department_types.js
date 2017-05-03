@@ -1,4 +1,4 @@
-const db = require('../../../express-postgres-api/db');
+const db = require('../../db');
 
 
 exports.all = cb => {

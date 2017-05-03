@@ -10,7 +10,7 @@ exports.all = (req, res) => {
     });
 };
 
-exports.all = (req, res) => {
+exports.one = (req, res) => {
   Persons.one( req.param.id, (err, result) => {
       if (err) {
           return res.sendStatus(500);
