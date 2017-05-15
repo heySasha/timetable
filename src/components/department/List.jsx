@@ -11,6 +11,7 @@ function List(props) {
                     <td>Назва департамента</td>
                     <td>Коротка назва</td>
                     <td>Тип</td>
+                    <td/>
                 </tr>
             </thead>
             <tbody>

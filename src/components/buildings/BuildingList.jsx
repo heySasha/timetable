@@ -11,6 +11,7 @@ function BuildingList(props) {
                 <td>Назва</td>
                 <td>Номер</td>
                 <td>Адрес</td>
+                <td/>
             </tr>
             </thead>
             <tbody>
@@ -19,7 +20,7 @@ function BuildingList(props) {
                     key={building.id_building}
                     id_building={building.id_building}
                     name_building={building.name_building}
-                    number_building={building.number_building}
+                    number_building={Number(building.number_building)}
                     address_building={building.address_building}
                     onDelete={props.onDelete}
                     onEdit={props.onEdit}/>)}

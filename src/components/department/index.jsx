@@ -1,7 +1,7 @@
 import  React from 'react';
 
-import ListContainer from '../../containers/ListContainer';
-import FormContainer from '../../containers/FormContainer';
+import ListContainer from '../../containers/departments/ListContainer';
+import FormContainer from '../../containers/departments/FormContainer';
 
 function Departments() {
     return (

@@ -8,13 +8,10 @@ export const EDIT_BUILDING = 'EDIT_BUILDING';
 let lastId;
 
 export function getBuildings() {
-    console.log('getBuildings');
+    //console.log('getBuildings');
     return axios.get('/api/buildings')
-        .then(res => {
-            console.log(res.data);
-            return res.data;
-        })
-        .then(buildings => {
+        .then( res => res.data )
+        .then( buildings => {
             lastId = buildings.rows.length ? buildings.rows[buildings.rows.length - 1].id_building : 1;
             //console.log(building);
             return {
@@ -34,15 +31,26 @@ export function addBuilding(id_building = ++lastId, name_building, number_buildi
 }
 
 export function deleteBuilding(id_building) {
-    return axios.delete(`/api/buildings/${id_building}`)
-        .then(res => ({
-            type: DELETE_BUILDING,
-            id_building
-        }));
+    return axios.get(`/api/classrooms/${id_building}`)
+        .then( res => res.data )
+        .then( classrooms => {
+            if (!classrooms.rows) {
+                return {
+                    type: DELETE_BUILDING,
+                    id_building: -1
+                }
+            }
+
+            return axios.delete(`/api/buildings/${id_building}`)
+                .then(res => ({
+                    type: DELETE_BUILDING,
+                    id_building
+                }));
+        });
 }
 
 export function editBuilding(id_building, name_building, number_building, address_building) {
-    return axios.put(`/api/buildings/${id_building}`, { name_building, number_building, address_building })
+    return axios.put(`/api/buildings/${id_building}`, { id_building, name_building, number_building, address_building })
         .then(res => res.data)
         .then(building => ({
             type: EDIT_BUILDING,

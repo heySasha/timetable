@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import From from '../components/department/Form';
-import { addDepartment } from '../actions';
+import From from '../../components/department/Form';
+import { addDepartment } from '../../actions/index';
 
 const mapDispatchToProps = dispatch => ({
     onAdd: (id_department, name_department, short_name_department, id_department_type, id_department_link) =>

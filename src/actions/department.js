@@ -33,7 +33,7 @@ export function getDepartments(departments) {
 }
 */
 export function addDepartment(id_department = ++lastId, name_department, short_name_department, id_department_type, id_department_link = null) {
-    return axios.post('api/departments',{ id_department, name_department, short_name_department, id_department_type, id_department_link })
+    return axios.post('/api/departments',{ id_department, name_department, short_name_department, id_department_type, id_department_link })
         .then(res => res.data)
         .then(department => ({
             type: ADD_DEPARTMENT,
@@ -49,7 +49,7 @@ export function addDepartment(id_department = ++lastId, name_department, short_n
 }));
 */
 export function deleteDepartment(id_department) {
-    return axios.delete(`api/departments/${id_department}`)
+    return axios.delete(`/api/departments/${id_department}`)
         .then(res => ({
             type: DELETE_DEPARTMENT,
             id_department
@@ -57,7 +57,7 @@ export function deleteDepartment(id_department) {
 }
 
 export function editDepartment(id_department = lastId, name_department, short_name_department, id_department_type) {
-    return axios.put(`api/departments/${id_department}`, { id_department, name_department, short_name_department, id_department_type })
+    return axios.put(`/api/departments/${id_department}`, { id_department, name_department, short_name_department, id_department_type })
         .then(res => res.data)
         .then(department => ({
             type: EDIT_DEPARTMENT,

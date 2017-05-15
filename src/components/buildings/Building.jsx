@@ -6,16 +6,13 @@ import Button from '../lib/Button';
 class Building extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             editing: false,
         };
-
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
     }
-
     componentDidUpdate(prevProps, prevState) {
 
         if (this.state.editing) {
@@ -24,35 +21,26 @@ class Building extends React.Component {
             //this.refs.address_building.focus();
         }
     }
-
     handleSubmit(event) {
         event.preventDefault();
-
         const name = this.refs.name_building.value;
         const number = this.refs.number_building.value;
         const address = this.refs.address_building.value;
-
-        this.props.onEdit(this.props.id_building, name, number, address);
-
+        this.props.onEdit(this.props.id_building, name, Number(number), address);
         this.setState({ editing: false });
     }
-
     handleDelete() {
         this.props.onDelete(this.props.id_building);
     }
-
     handleEdit() {
         this.setState({ editing: true });
     }
-
     renderDisplay() {
-
         return (
             <tr>
                 <td>{this.props.name_building}</td>
                 <td>{this.props.number_building}</td>
                 <td>{this.props.address_building}</td>
-
                 <td>
                     <Button onClick={this.handleEdit}>edit</Button>
                     <Button onClick={this.handleDelete}>delete</Button>
@@ -60,7 +48,6 @@ class Building extends React.Component {
             </tr>
         )
     }
-
     renderForm() {
         return (
             <tr>
@@ -72,12 +59,10 @@ class Building extends React.Component {
             </tr>
         )
     }
-
     render() {
         return this.state.editing ? this.renderForm() : this.renderDisplay();
     }
 }
-
 Building.propTypes = {
     id_building: PropTypes.number.isRequired,
     name_building: PropTypes.string.isRequired,
@@ -86,5 +71,4 @@ Building.propTypes = {
     onDelete: PropTypes.func.isRequired,
     onEdit: PropTypes.func.isRequired
 };
-
 export default Building;

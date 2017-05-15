@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import BuildingList from '../components/buildings/BuildingList';
-import { deleteBuilding, editBuilding } from '../actions';
+import BuildingList from '../../components/buildings/BuildingList';
+import { deleteBuilding, editBuilding } from '../../actions/index';
 
 const mapStateToProps = state => {
     console.log(state);
@@ -13,7 +13,5 @@ const mapDispatchToProps = dispatch => ({
     onEdit: (id_building, name_building, number_building, address_building) =>
         dispatch(editBuilding(id_building, name_building, number_building, address_building))
 });
-
 const BuildingListContainer = connect(mapStateToProps, mapDispatchToProps)(BuildingList);
-
 export default BuildingListContainer;

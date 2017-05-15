@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import List from '../components/department/List';
-import { deleteDepartment, editDepartment } from '../actions';
+import List from '../../components/department/List';
+import { deleteDepartment, editDepartment } from '../../actions/index';
 
 const mapStateToProps = state => {
     console.log(state.departments);

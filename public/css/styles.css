@@ -135,3 +135,7 @@ input {
     border: 1px solid lightgray;
     outline: none;
 }
+
+thead {
+    background-color: beige;
+}

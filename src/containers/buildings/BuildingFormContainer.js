@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import BuildingFrom from '../components/buildings/BuildingForm';
-import { addBuilding } from '../actions';
+import BuildingFrom from '../../components/buildings/BuildingForm';
+import { addBuilding } from '../../actions/index';
 
 const mapDispatchToProps = dispatch => ({
     onAdd: (id_building, name_building, number_building, address_building) =>

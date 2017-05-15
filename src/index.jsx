@@ -5,43 +5,65 @@ import { Router, Route, IndexRoute, IndexRedirect, browserHistory } from 'react-
 
 import App from './App';
 
-import Home from './components/Home';
-import NotFound from './components/NotFound';
+import Home from './components/lib/Home';
+import NotFound from './components/lib/NotFound';
 
-import Timetable from './components/Timetable';
-import Directory from './components/Directory';
-import Groups from './components/Groups';
+import Timetable from './components/lib/Timetable';
+import Directory from './components/lib/Directory';
+import Groups from './components/groups';
 
-import AboutDirectory from './components/AboutDirectory';
-import Subjects from './components/Subjects';
-import Faculties from './components/Faculties';
+import AboutDirectory from './components/lib/AboutDirectory';
+import Classrooms from './components/classrooms';
+import LoginForm from './components/lib/LoginForm';
 
 import store from './store';
 
 import Buildings from './components/buildings';
 import Departments from './components/department'
-import { getBuildings } from './actions';
-import { getDepartments } from  './actions';
+import { getBuildings, getDepartments, getClassrooms, setClassroomFilter } from './actions';
 
 store.dispatch(getBuildings());
 store.dispatch(getDepartments());
+store.dispatch(getClassrooms());
 
-ReactDOM.render(
-    <Provider store={store}>
+function Routes() {
+    return (
         <Router history={browserHistory}>
             <Route path="/" component={App}>
                 <IndexRoute component={Home}/>
                 <Route path="timetable" component={Timetable}/>
-                <Route path="directory" component={Directory}>
+
+                <Route path="directory" component={Directory} >
                     <IndexRoute component={AboutDirectory}/>
                     <Route path="groups" component={Groups}/>
                     <Route path="buildings" component={Buildings}/>
-                    <Route path="subjects" component={Subjects}/>
-                    <Route path="faculties" component={Departments}/>
+                    <Route path="classrooms" component={Classrooms}/>
+                    <Route path="departments" component={Departments}/>
                 </Route>
+
+                <Route path="/login" components={LoginForm} />
                 <Route path="*" component={NotFound}/>
             </Route>
+
         </Router>
+    );
+}
+
+ReactDOM.render(
+    <Provider store={store}>
+        <Routes/>
     </Provider>,
 
     document.getElementById('root'));
+
+/*
+function checkLogin(nextState, replace) {
+    const login = window.localStorage.getItem('rr_login');
+    if (login === 'admin')
+ return;
+
+    if (login !== 'admin') {
+        replace('/login');
+    } else checkLogin(nextState, replace);
+}
+*/

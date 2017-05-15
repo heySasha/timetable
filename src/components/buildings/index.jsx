@@ -1,15 +1,12 @@
 import  React from 'react';
 
-import BuildingListContainer from '../../containers/BuildingListContainer';
-import BuildingFormContainer from '../../containers/BuildingFormContainer';
+import BuildingListContainer from '../../containers/buildings/BuildingListContainer';
+import BuildingFormContainer from '../../containers/buildings/BuildingFormContainer';
 
-function Buildings() {
-    return (
-        <main>
-            <BuildingListContainer />
-            <BuildingFormContainer />
-        </main>
-    )
-}
+const Buildings = () =>
+    <main>
+        <BuildingListContainer />
+        <BuildingFormContainer />
+    </main>;
 
 export default Buildings;
